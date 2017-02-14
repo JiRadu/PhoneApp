@@ -3,16 +3,29 @@ import { NavController, AlertController, LoadingController, Loading } from 'ioni
 import { AuthService } from '../../providers/auth-service';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
+  providers: [Storage]
 })
 export class LoginPage {
   loading: Loading;
   registerCredentials = {email: '', password: ''};
+  private storage: Storage;
 
-  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
+  constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController, private loadingCtrl: LoadingController, storage: Storage) {
+    this.storage = storage;
+    this.storage.get('User').then((User)=>{
+      if(User && User.loggedIn){
+        setTimeout(() => {
+          this.auth.setUser(User);
+          this.nav.setRoot(HomePage);
+        });
+      }
+    });
+  }
 
   public createAccount() {
     this.nav.push(RegisterPage);
@@ -23,8 +36,16 @@ export class LoginPage {
     this.auth.login(this.registerCredentials).subscribe(allowed => {
       if (allowed) {
         setTimeout(() => {
-        this.loading.dismiss();
-        this.nav.setRoot(HomePage)
+          this.loading.dismiss();
+          let User = {
+            loggedIn: true,
+            name: 'asd',
+            email: 'asd'
+          };
+          this.storage.set('User', User).then(response => {
+            this.auth.setUser(User);
+            this.nav.setRoot(HomePage);
+          });
         });
       } else {
         this.showError("Access Denied");

@@ -23,13 +23,11 @@ export class AuthService {
       return Observable.create(observer => {
         // At this point make a request to your backend to make a real check!
         let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('Simon', 'saimon@devdactic.com');
         observer.next(access);
         observer.complete();
       });
     }
   }
-
   public register(credentials) {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
@@ -44,6 +42,10 @@ export class AuthService {
 
   public getUserInfo() : User {
     return this.currentUser;
+  }
+
+  public setUser(user){
+    this.currentUser = new User(user.name, user.email);
   }
 
   public logout() {
