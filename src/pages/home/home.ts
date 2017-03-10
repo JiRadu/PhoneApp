@@ -9,21 +9,24 @@ import { Storage } from '@ionic/storage';
   providers: [Storage]
 })
 export class HomePage {
-  username = '';
+  name = '';
   email = '';
   private storage: Storage;
 
   constructor(private nav: NavController, private auth: AuthService, storage: Storage) {
     let info = this.auth.getUserInfo();
-    this.username = info.name;
+    this.name = info.name;
     this.email = info.email;
     this.storage = storage;
   }
 
   public logout() {
     this.auth.logout().subscribe(succ => {
+        this.auth.logout();
         this.storage.set('User',{loggedIn: false, name: '', email: ''});
-        this.nav.setRoot(LoginPage)
+        this.nav.setRoot(LoginPage);
     });
+  }
+  public go(){
   }
 }
