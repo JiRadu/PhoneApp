@@ -39,8 +39,8 @@ export class LoginPage {
           this.loading.dismiss();
           let User = {
             loggedIn: true,
-            name: 'asd',
-            email: 'asd'
+            name: 'Un nume oarecare',
+            email: this.registerCredentials.email
           };
           this.storage.set('User', User).then(response => {
             this.auth.setUser(User);
