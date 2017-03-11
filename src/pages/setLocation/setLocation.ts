@@ -3,18 +3,18 @@ import {NavController} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
-import { SetLocation } from '../setLocation/setLocation';
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'set-location',
+  templateUrl: 'setLocation.html',
   providers: [Storage]
 })
-export class HomePage {
+export class SetLocation {
   name = '';
   email = '';
   private storage: Storage;
 
   constructor(private nav: NavController, private auth: AuthService, storage: Storage) {
+    //TODO:Figure out if we need verification is user is not auth here
     let info = this.auth.getUserInfo();
     this.name = info.name;
     this.email = info.email;
@@ -28,7 +28,7 @@ export class HomePage {
         this.nav.setRoot(LoginPage);
     });
   }
-  public setLocation(){
-    this.nav.push(SetLocation);
+  public go(){
+    this.nav.pop();
   }
 }
