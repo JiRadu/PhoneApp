@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { LoginPage } from '../pages/login/login';
 @Component({
-  template: `<ion-nav [root]="rootPage"></ion-nav>`,
+  templateUrl: 'app.html',
 })
 export class MyApp {
   rootPage = LoginPage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, menu: MenuController) {
     platform.ready().then(() => {
       StatusBar.styleDefault();
     });
