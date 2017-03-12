@@ -26,6 +26,6 @@ import { SetLocation } from '../pages/setLocation/setLocation';
     RegisterPage,
     SetLocation
   ],
-  providers: [AuthService]
+  providers: [Storage, AuthService]
 })
 export class AppModule {}
