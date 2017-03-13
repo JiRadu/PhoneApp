@@ -33,19 +33,19 @@ export class AddProductPage {
     this.name = info.name;
     this.email = info.email;
     this.storage = storage;
-    this.storage.get('vectorTest').then((response)=>{
+    this.storage.get('productList').then((response)=>{
       this.Products = response;
     });
   }
   public testAddProduct(){
   //   let storage = this.storage;
-  //   storage.get('vectorTest').then(function(response){
+  //   storage.get('productList').then(function(response){
   //     if(response == null){
   //       response = [];
   //     }
   //     response.push({nume:"pizza",cost:3});
   //     console.log(storage);
-  //     storage.set('vectorTest',response);
+  //     storage.set('productList',response);
   //     console.log(response);
   //   });
   }
@@ -73,21 +73,21 @@ export class AddProductPage {
   public deleteProduct(product){
     let storage = this.storage;
     this.Products.splice(this.Products.indexOf(product));
-    storage.get('vectorTest').then((response)=>{
+    storage.get('productList').then((response)=>{
       response.splice(response.indexOf(product));
-      storage.set('vectorTest',response);
+      storage.set('productList',response);
     });
   }
   public submitForm(Product){
     let storage = this.storage;
 
     this.Products.push(Product);
-    storage.get('vectorTest').then((response)=>{
+    storage.get('productList').then((response)=>{
       if(response === null){
         response = [];
       }
       response.push(Product);
-      storage.set('vectorTest',response);
+      storage.set('productList',response);
     });
   }
 }
