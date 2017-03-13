@@ -14,7 +14,6 @@ export class SetLocation {
   private storage: Storage;
 
   constructor(private nav: NavController, private auth: AuthService, storage: Storage) {
-    //TODO:Figure out if we need verification is user is not auth here
     let info = this.auth.getUserInfo();
     this.name = info.name;
     this.email = info.email;

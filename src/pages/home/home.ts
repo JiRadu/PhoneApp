@@ -4,6 +4,7 @@ import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
 import { SetLocation } from '../setLocation/setLocation';
+import { AddProductPage } from '../addProduct/addProduct';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -30,5 +31,8 @@ export class HomePage {
   }
   public setLocation(){
     this.nav.push(SetLocation);
+  }
+  public addProduct(){
+    this.nav.push(AddProductPage);
   }
 }

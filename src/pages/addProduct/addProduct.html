@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      BillPayApp
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="logout()">
+        <ion-icon name="log-out">Logout</ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home" padding>
+<!-- <button ion-button (click)="testAddProduct()">test add</button> -->
+    <ion-list>
+      <button ion-item *ngFor="let product of Products" (click)="deleteProduct(product)">
+        {{product.nume}}
+        <br>
+        {{product.cost}}
+        <br>
+      </button>
+    </ion-list>
+    <div align="center">
+      <img src="assets/icon/logo.png" class="logo"/>
+    </div>
+    <!-- AddProductForm -->
+    <form [formGroup]="authForm" (ngSubmit)="submitForm(authForm.value)">
+        <ion-item>
+            <ion-input type="text" value="" [formControl]="authForm.controls['nume']"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" value="" [formControl]="authForm.controls['cost']" ></ion-input>
+        </ion-item>
+
+    <button type="submit" ion-button full>Submit</button>
+    </form>
+</ion-content>

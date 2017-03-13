@@ -6,6 +6,7 @@ import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../providers/auth-service';
 import { RegisterPage } from '../pages/register/register';
 import { SetLocation } from '../pages/setLocation/setLocation';
+import { AddProductPage } from '../pages/addProduct/addProduct';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SetLocation } from '../pages/setLocation/setLocation';
     HomePage,
     LoginPage,
     RegisterPage,
-    SetLocation
+    SetLocation,
+    AddProductPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,7 +26,8 @@ import { SetLocation } from '../pages/setLocation/setLocation';
     HomePage,
     LoginPage,
     RegisterPage,
-    SetLocation
+    SetLocation,
+    AddProductPage
   ],
   providers: [Storage, AuthService]
 })
