@@ -29,10 +29,10 @@
     <!-- AddProductForm -->
     <form [formGroup]="authForm" (ngSubmit)="submitForm(authForm.value)">
         <ion-item>
-            <ion-input type="text" value="" [formControl]="authForm.controls['nume']"></ion-input>
+            <ion-input type="text" placeholder="Name" value="" [formControl]="authForm.controls['nume']"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" value="" [formControl]="authForm.controls['cost']" ></ion-input>
+            <ion-input type="text" placeholder="Cost" value="" [formControl]="authForm.controls['cost']" ></ion-input>
         </ion-item>
 
     <button type="submit" ion-button full>Submit</button>

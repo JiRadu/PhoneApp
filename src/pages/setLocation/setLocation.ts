@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
+//TODO:sa se memoreze in storage locatia
 @Component({
   selector: 'set-location',
   templateUrl: 'setLocation.html',

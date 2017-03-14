@@ -59,9 +59,15 @@ export class AddProductPage {
 
   public deleteProduct(product){
     let storage = this.storage;
-    this.Products.splice(this.Products.indexOf(product));
+     let index = this.Products.indexOf(product);
+
     storage.get('productList').then((response)=>{
-      response.splice(response.indexOf(product));
+
+      if (index >-1){
+        this.Products.splice(index, 1);
+        response.splice(index,1);
+      }
+
       storage.set('productList',response);
     });
   }
